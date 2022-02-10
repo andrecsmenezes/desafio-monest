@@ -6,46 +6,6 @@ import PriceTable from './components/PriceTable'
 import { IPriceTableItemProps } from './components/PriceTableItem'
 import api from './config/api'
 
-const sample: IPriceTableItemProps[] = [
-  {
-    title: 'Free',
-    monthlyPrice: 0,
-    annuallyPrice: 0,
-    features: [
-      '2 repositories',
-      '5 members',
-      '10 Gb storage',
-    ],
-    bestPlan: false,
-  },
-
-  {
-    title: 'Plus',
-    monthlyPrice: 999,
-    annuallyPrice: 11988,
-    features: [
-      '10 repositories',
-      '15 members',
-      '50 Gb storage',
-      '24/7 support',
-    ],
-    bestPlan: true,
-  },
-
-  {
-    title: 'Pro',
-    monthlyPrice: 4999,
-    annuallyPrice: 59988,
-    features: [
-      'Unlimited repositories',
-      'Unlimited members',
-      '1 Tb storage',
-      '24/7 storage',
-    ],
-    bestPlan: false,
-  },
-]
-
 class App extends React.Component {
     render(): React.ReactNode {
         api
@@ -67,7 +27,7 @@ class App extends React.Component {
                     <Period />
                 </div>
                 <div>
-                    <PriceTable items={ sample } />
+                    <PriceTable items={ [] as IPriceTableItemProps[] } />
                 </div>
             </div>
         )

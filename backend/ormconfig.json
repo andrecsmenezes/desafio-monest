@@ -1,0 +1,24 @@
+{
+    "type"                : "mysql",
+    "host"                : "localhost",
+    "port"                : 3306,
+    "username"            : "monest",
+    "password"            : "1234",
+    "database"            : "monest",
+    "migrationsTableName" : "migrations",
+    "logging"             : true,
+    "synchronize"         : true,
+    "entities"            : [ "src/entities/**/*{.ts,.js}" ],
+    "migrations"          : [ "src/migrations/**/*{.ts,.js}" ],
+    "subscribers"         : [ "src/subscribers/**/*{.ts,.js}" ],
+    "seeds"               : [ "src/seeds/**/*{.ts,.js}" ],
+    "factories"           : [ "src/factories/**/*{.ts,.js}" ],
+
+    "cli": {
+        "entitiesDir"    : "src/entities",
+        "migrationsDir"  : "src/migrations",
+        "subscribersDir" : "src/subscribers",
+        "seedsDir"       : "src/seeds",
+        "factoriesDir"   : "src/factories"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.js",
+    "type": "commonjs",
+    "scripts": {
+        "dev": "nodemon",
+        "start": "ts-node src/index.ts",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "migrate": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run",
+        "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+        "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+        "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+        "debug": "nodemon --inspect app.js",
+        "fixtures:run:seed": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js seed -n src/fixtures/ormFixturesConfig.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@anchan828/typeorm-history": "^0.8.6",
+        "mysql2": "^2.3.3",
+        "reflect-metadata": "^0.1.10",
+        "restify": "^8.6.0",
+        "restify-cors-middleware2": "^2.1.2",
+        "typeorm": "0.2.41",
+        "typeorm-seeding": "^1.6.1"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.13",
+        "@types/node": "^8.0.29",
+        "nodemon": "^2.0.15",
+        "ts-node": "3.3.0",
+        "tsconfig-paths": "^3.12.0",
+        "typescript": "3.3.3333"
+    }
+}

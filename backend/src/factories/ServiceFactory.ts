@@ -8,9 +8,10 @@ export default class ServiceFactory {
 
         service.order         = data.order
         service.title         = data.title
-        service.montlyPrice   = data.montlyPrice
+        service.monthlyPrice  = data.monthlyPrice
         service.annuallyPrice = data.annuallyPrice
         service.features      = data.features
+        service.bestPlan      = data.bestPlan
 
         return service
     }

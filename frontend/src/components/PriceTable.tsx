@@ -1,9 +1,10 @@
 import { Component, ReactNode } from 'react'
 import PriceTableItem, { IPriceTableItemProps } from './PriceTableItem'
-import { withHooksHOC } from '../hooks/withHooksHOC'
 
 interface IPriceTable {
-    items: IPriceTableItemProps[]
+    period         : number
+    items          : IPriceTableItemProps[]
+    annualDiscount : number
 }
 
 class PriceTable extends Component<IPriceTable> {
@@ -12,7 +13,7 @@ class PriceTable extends Component<IPriceTable> {
     }
 
     render(): ReactNode {
-        const { items } = this.props
+        const { items, period, annualDiscount } = this.props
 
         return (
             <div className="grid w-full grid-cols-3">
@@ -23,7 +24,9 @@ class PriceTable extends Component<IPriceTable> {
                                                                                     monthlyPrice={ item.monthlyPrice }
                                                                                     annuallyPrice={ item.annuallyPrice }
                                                                                     features={ item.features }
-                                                                                    bestPlan={ item.bestPlan } />
+                                                                                    bestPlan={ item.bestPlan }
+                                                                                    period={ period }
+                                                                                    annualDiscount={ annualDiscount } />
                             )
                 }
             </div>
@@ -31,4 +34,4 @@ class PriceTable extends Component<IPriceTable> {
     }
 }
 
-export default withHooksHOC( PriceTable )
+export default PriceTable

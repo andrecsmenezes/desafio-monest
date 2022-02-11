@@ -14,8 +14,9 @@ export default class ServiceSeed implements Seeder {
                 {
                     order         : 1,
                     title         : 'Free',
-                    montlyPrice   : 0,
+                    monthlyPrice  : 0,
                     annuallyPrice : 0,
+                    bestPlan      : 0,
 
                     features: JSON.stringify([
                         '2 repositories',
@@ -27,8 +28,9 @@ export default class ServiceSeed implements Seeder {
                 {
                     order         : 2,
                     title         : 'Plus',
-                    montlyPrice   : 999,
+                    monthlyPrice  : 999,
                     annuallyPrice : 11988,
+                    bestPlan      : 1,
 
                     features: JSON.stringify([
                         '10 repositories',
@@ -40,8 +42,9 @@ export default class ServiceSeed implements Seeder {
                 {
                     order         : 3,
                     title         : 'Pro',
-                    montlyPrice   : 4999,
+                    monthlyPrice  : 4999,
                     annuallyPrice : 59988,
+                    bestPlan      : 0,
 
                     features: JSON.stringify([
                         'Unlimited repositories',

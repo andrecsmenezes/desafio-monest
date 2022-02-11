@@ -4,9 +4,10 @@ export interface IService {
     id?            : number,
     order?         : number,
     title?         : string,
-    montlyPrice?   : number,
+    monthlyPrice?  : number,
     annuallyPrice? : number,
-    features?      : string
+    features?      : string,
+    bestPlan?      : number,
 }
 
 @Entity()
@@ -22,13 +23,16 @@ export default class Service {
     title!: string
 
     @Column( 'int' )
-    montlyPrice!: number
+    monthlyPrice!: number
 
     @Column( 'int' )
     annuallyPrice!: number
 
     @Column( 'json' )
     features!: string
+
+    @Column( 'tinyint' )
+    bestPlan!: number
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
     createdAt!: Date
@@ -41,9 +45,10 @@ export default class Service {
         if( data ) {
             if( data.id            ) this.id            = data.id
             if( data.title         ) this.title         = data.title
-            if( data.montlyPrice   ) this.montlyPrice   = data.montlyPrice
+            if( data.monthlyPrice  ) this.monthlyPrice  = data.monthlyPrice
             if( data.annuallyPrice ) this.annuallyPrice = data.annuallyPrice
             if( data.features      ) this.features      = data.features
+            if( data.bestPlan      ) this.bestPlan      = data.bestPlan
         }
 
     }

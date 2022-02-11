@@ -1,43 +1,46 @@
-import React, { Component, ReactNode } from 'react'
-import PeriodContext, { EPeriod } from '../contexts/PeriodContext'
+import { Component, ReactNode } from 'react'
+import './PriceTableItem/PriceTableItem.scss'
 
 export interface IPriceTableItemProps {
-    id            ?: number,
-    title         ?: string,
-    monthlyPrice  ?: number,
-    annuallyPrice ?: number,
-    features      ?: string[],
-    bestPlan      ?: boolean
+    id             ?: number,
+    title          ?: string,
+    monthlyPrice   ?: number,
+    annuallyPrice  ?: number,
+    features       ?: string[],
+    bestPlan       ?: boolean,
+    period         ?: number,
+    annualDiscount ?: number
 }
 
 class PriceTableItem extends Component<IPriceTableItemProps> {
-
-    static contextType = PeriodContext
 
     constructor( props: IPriceTableItemProps ) {
         super( props )
     }
 
-    componentDidMount() {
-        const value = this.context
-    }
-
     render(): ReactNode {
-        const { title, monthlyPrice, annuallyPrice, features, bestPlan } = this.props
+        const { title, monthlyPrice, annuallyPrice, features, bestPlan, period, annualDiscount } = this.props
 
-        let price = NaN
+        const selectedPrice = period        === 1 ? annuallyPrice : monthlyPrice
+        const price         = selectedPrice === 0 ? selectedPrice : ( selectedPrice || NaN ) / 100
 
-        switch( this.context.period ) {
-            case EPeriod.MONTHLY :
-                price = monthlyPrice || 0 / 10
-                break
+        let annualDiscountPrice
 
-            case EPeriod.ANNUALLY :
-                price = annuallyPrice || 0 / 10
-                break
+        if(
+            period === 1
+            && annualDiscount
+            && annualDiscount > 0
+        ) {
+            const discount = ( price * ( 1 - ( 1 / annualDiscount ) ) )
 
-            default :
-                price = NaN
+            if( price > discount ) {
+                annualDiscountPrice = <div className='text-blue-800'>
+                                            {
+                                                ( price * ( 1 - ( 1 / annualDiscount ) ) )
+                                                    .toLocaleString( 'pt-BR', { style: 'currency', currency: 'BRL' } )
+                                            }
+                                        </div>
+            }
         }
 
         return (
@@ -45,7 +48,12 @@ class PriceTableItem extends Component<IPriceTableItemProps> {
 
                 <div className='text-center'>{ title }</div>
 
-                <div className='mb-5 text-4xl font-bold text-center'>{ price.toLocaleString( 'pt-BR', { style: 'currency', currency: 'BRL' } ) }</div>
+                <div className='mb-5 text-4xl font-bold text-center'>
+                    <span className={ `${ annualDiscountPrice ? 'relative price-cut text-sm text-red-800' : '' }` }>
+                        { price.toLocaleString( 'pt-BR', { style: 'currency', currency: 'BRL' } ) }
+                    </span>
+                    { annualDiscountPrice }
+                </div>
 
                 <div className='mb-5'>
                     <ul>

@@ -33,7 +33,7 @@ export default class ServiceService {
                         .set({
                             ...( ( partial && service.order         || !partial ) && { order         : service.order         } ),
                             ...( ( partial && service.title         || !partial ) && { title         : service.title         } ),
-                            ...( ( partial && service.montlyPrice   || !partial ) && { montlyPrice   : service.montlyPrice   } ),
+                            ...( ( partial && service.monthlyPrice  || !partial ) && { monthlyPrice  : service.monthlyPrice  } ),
                             ...( ( partial && service.annuallyPrice || !partial ) && { annuallyPrice : service.annuallyPrice } ),
                             ...( ( partial && service.features      || !partial ) && { features      : service.features      } ),
                         })
@@ -51,7 +51,7 @@ export default class ServiceService {
                         .values({
                             order         : service.order,
                             title         : service.title,
-                            montlyPrice   : service.montlyPrice,
+                            monthlyPrice  : service.monthlyPrice,
                             annuallyPrice : service.annuallyPrice,
                             features      : service.features
                         })

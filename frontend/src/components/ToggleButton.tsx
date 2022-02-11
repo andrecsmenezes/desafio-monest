@@ -1,16 +1,15 @@
-import { Component, ReactNode, ChangeEvent, Context } from 'react'
-import PeriodContext, { EPeriod } from '../contexts/PeriodContext'
+import { Component, ReactNode, ChangeEvent } from 'react'
 import './ToggleButton/ToggleButton.scss'
 
-interface IToggleButtonProps {}
-
 interface IToggleButtonState {
-    checked?: boolean
+    checked : boolean
+}
+
+interface IToggleButtonProps {
+    handleIsActive : ( checked: boolean ) => void
 }
 
 class ToggleButton extends Component<IToggleButtonProps, IToggleButtonState> {
-
-    static contextType = PeriodContext
 
     constructor( props: IToggleButtonProps ) {
         super( props )
@@ -18,13 +17,11 @@ class ToggleButton extends Component<IToggleButtonProps, IToggleButtonState> {
         this.state = {
             checked: false
         }
-
-        this.handleChange = this.handleChange.bind( this )
     }
 
     handleChange( event: ChangeEvent<HTMLInputElement> ) {
         this.setState( { checked: event.target.checked } )
-        this.context.setPeriod( event.target.checked ? EPeriod.ANNUALLY : EPeriod.MONTHLY )
+        this.props.handleIsActive( event.target.checked )
     }
 
     render(): ReactNode {
@@ -37,7 +34,7 @@ class ToggleButton extends Component<IToggleButtonProps, IToggleButtonState> {
                             className="sr-only"
                             checked={ this.state.checked }
                             placeholder='Toggle'
-                            onChange={ this.handleChange }
+                            onChange={ ( event ) => this.handleChange( event ) }
                         />
 
                         <div className="block h-8 bg-gray-600 rounded-full w-14"></div>

@@ -22,7 +22,7 @@
         "@anchan828/typeorm-history": "^0.8.6",
         "mysql2": "^2.3.3",
         "reflect-metadata": "^0.1.10",
-        "restify": "^8.6.0",
+        "restify": "^8.6.1",
         "restify-cors-middleware2": "^2.1.2",
         "typeorm": "0.2.41",
         "typeorm-seeding": "^1.6.1"

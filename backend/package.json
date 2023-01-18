@@ -19,7 +19,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@anchan828/typeorm-history": "^0.8.6",
+        "@anchan828/typeorm-history": "^0.9.0",
         "mysql2": "^2.3.3",
         "reflect-metadata": "^0.1.10",
         "restify": "^8.6.0",
